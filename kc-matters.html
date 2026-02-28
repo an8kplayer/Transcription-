@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KC Matters - Steno Practice</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body.dark .matter-item { background:#2d2d2d; color:#fff; border-color:#444; }
+.matter-item { 
+  border:1px solid #ccc; padding:10px; margin:8px 0; border-radius:5px;
+  cursor:pointer; transition: background 0.2s; display:block;
+}
+.matter-item:hover { background:#f0f0f0; }
+.back-btn { background:#6c757d; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; margin-bottom:15px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>KC Matters</h2>
+<button class="back-btn" onclick="goHome()">🏠 Home</button>
+
+<div id="mattersList">
+  <!-- Matters will be injected here -->
+</div>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+const KC_MATTERS = [
+  { name: "Transcription No: 1", text: "This is the first pre-saved passage." },
+  { name: "Transcription No: 2", text: "Second passage with different content." },
+  { name: "Transcription No: 33", text: "Transcription 33 example passage for testing." }
+];
+
+const list = document.getElementById('mattersList');
+
+KC_MATTERS.forEach((matter, index) => {
+  const btn = document.createElement('button');
+  btn.className = 'matter-item';
+  btn.innerText = matter.name;
+  btn.onclick = () => selectMatter(matter.text, matter.name);
+  list.appendChild(btn);
+});
+
+// Apply dark mode if on
+if(localStorage.getItem("darkMode")==="on") document.body.classList.add("dark");
+</script>
+</body>
+</html>
