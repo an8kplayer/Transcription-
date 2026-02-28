@@ -298,4 +298,15 @@ if (localStorage.getItem("darkMode") === "on") {
     document.body.classList.add("dark");
         }
 
-    
+
+// Navigate to Home
+function goHome(){
+    window.location.href = "index.html";
+}
+
+// Select a matter from KC page
+function selectMatter(text, name){
+    localStorage.setItem("selectedMatter", text);
+    localStorage.setItem("currentPassageName", name);
+    window.location.href = "index.html"; // Back to main page
+}
