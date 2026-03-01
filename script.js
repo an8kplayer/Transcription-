@@ -114,10 +114,6 @@ window.onload = function(){
         document.body.classList.add("dark");
     }
     
-    const path = location.pathname;
-    loadSavedPassages();
-    loadHistory();
-
     // Check if we came from KC Matters with a selected matter
     const selectedMatter = localStorage.getItem("selectedMatter");
     if (selectedMatter) {
@@ -129,6 +125,10 @@ window.onload = function(){
         }
     }
 
+    loadSavedPassages();
+    loadHistory();
+
+    const path = location.pathname;
     if(path.includes("exam.html")) startExam();
     if(path.includes("result.html")) showResult();
 
