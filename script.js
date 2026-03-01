@@ -120,7 +120,7 @@ window.onload = function(){
 
     // Check if we came from KC Matters with a selected matter
     const selectedMatter = localStorage.getItem("selectedMatter");
-    if (selectedMatter && path.includes("index.html")) {
+    if (selectedMatter) {
         const passageInput = document.getElementById("passageInput");
         if (passageInput) {
             passageInput.value = selectedMatter;
