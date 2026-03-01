@@ -313,3 +313,11 @@ function selectMatter(text, name){
     localStorage.setItem("currentPassageName", name);
     window.location.href = "index.html"; // Back to main page
 }
+
+// ---------- FIX KC MATTERS BUTTON (ensure it works) ----------
+const kcButton = document.querySelector('button[onclick="openKCPage()"]');
+if (kcButton) {
+    kcButton.onclick = function(e) {
+        openKCPage();
+    };
+}
