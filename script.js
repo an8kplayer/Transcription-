@@ -118,6 +118,17 @@ window.onload = function(){
     loadSavedPassages();
     loadHistory();
 
+    // Check if we came from KC Matters with a selected matter
+    const selectedMatter = localStorage.getItem("selectedMatter");
+    if (selectedMatter && path.includes("index.html")) {
+        const passageInput = document.getElementById("passageInput");
+        if (passageInput) {
+            passageInput.value = selectedMatter;
+            // Clear it so it doesn't paste again on next visit
+            localStorage.removeItem("selectedMatter");
+        }
+    }
+
     if(path.includes("exam.html")) startExam();
     if(path.includes("result.html")) showResult();
 }
