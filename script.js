@@ -314,10 +314,5 @@ function selectMatter(text, name){
     window.location.href = "index.html"; // Back to main page
 }
 
-// ---------- FIX KC MATTERS BUTTON (ensure it works) ----------
-const kcButton = document.querySelector('button[onclick="openKCPage()"]');
-if (kcButton) {
-    kcButton.onclick = function(e) {
-        openKCPage();
-    };
-}
+// Make sure openKCPage is globally available
+window.openKCPage = openKCPage;
