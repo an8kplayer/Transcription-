@@ -326,10 +326,16 @@ function openKCPage(){
 
 // Select a matter from KC page
 function selectMatter(text, name){
+    console.log("Selecting matter:", name);
     localStorage.setItem("selectedMatter", text);
     localStorage.setItem("currentPassageName", name);
-    window.location.href = "index.html"; // Back to main page
+    window.location.href = "index.html"; 
 }
 
-// Make sure openKCPage is globally available (redundant but safe)
+// Make sure functions are globally available
+window.selectMatter = selectMatter;
 window.openKCPage = openKCPage;
+window.goHome = goHome;
+window.openKCPage = function() { window.location.href = "kc-matters.html"; };
+window.goHome = function() { window.location.href = "index.html"; };
+                  
