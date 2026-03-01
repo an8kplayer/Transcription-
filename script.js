@@ -297,7 +297,10 @@ function toggleDarkMode() {
 if (localStorage.getItem("darkMode") === "on") {
     document.body.classList.add("dark");
         }
-
+// OPEN KC MATTERS PAGE
+function openKCPage(){
+    window.location.href = "kc-matters.html";
+}
 
 // Navigate to Home
 function goHome(){
