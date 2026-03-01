@@ -108,15 +108,25 @@ function applyFontSize() {
     document.documentElement.style.setProperty('--base-font-size', size + "px");
 }
 
-// ---------- ON PAGE LOAD ----------
 window.onload = function(){
+
     if (localStorage.getItem("darkMode") === "on") {
         document.body.classList.add("dark");
     }
-    
+
     const path = location.pathname;
     loadSavedPassages();
     loadHistory();
+
+    // ✅ LOAD KC SELECTED MATTER INTO TEXTBOX
+    const selected = localStorage.getItem("selectedMatter");
+    if(selected){
+        const box = document.getElementById("passageInput");
+        if(box){
+            box.value = selected;
+            localStorage.removeItem("selectedMatter"); // optional: clears after load
+        }
+    }
 
     if(path.includes("exam.html")) startExam();
     if(path.includes("result.html")) showResult();
