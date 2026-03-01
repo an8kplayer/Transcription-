@@ -131,6 +131,15 @@ window.onload = function(){
 
     if(path.includes("exam.html")) startExam();
     if(path.includes("result.html")) showResult();
+
+    // ---------- FIX KC MATTERS BUTTON (direct event binding) ----------
+    const kcButton = document.querySelector('button[onclick="openKCPage()"]');
+    if (kcButton) {
+        kcButton.onclick = function(e) {
+            e.preventDefault();
+            openKCPage();
+        };
+    }
 }
 
 // ---------- HOME PAGE FUNCTIONS ----------
@@ -294,7 +303,7 @@ function saveHistoryRecord(passage, typed, gross, net, accuracy, errors){
 
 // ---------- NAVIGATION ----------
 function retryTest(){window.location.href="exam.html";}
-function goHome(){window.location.href="index.html";}
+function goHome(){window.location.href="index.html";}   // Single definition
 function toggleDarkMode() {
     document.body.classList.toggle("dark");
 
@@ -305,17 +314,14 @@ function toggleDarkMode() {
     }
 }
 
+// Apply dark mode on load
 if (localStorage.getItem("darkMode") === "on") {
     document.body.classList.add("dark");
-        }
+}
+
 // OPEN KC MATTERS PAGE
 function openKCPage(){
     window.location.href = "kc-matters.html";
-}
-
-// Navigate to Home
-function goHome(){
-    window.location.href = "index.html";
 }
 
 // Select a matter from KC page
@@ -325,5 +331,5 @@ function selectMatter(text, name){
     window.location.href = "index.html"; // Back to main page
 }
 
-// Make sure openKCPage is globally available
+// Make sure openKCPage is globally available (redundant but safe)
 window.openKCPage = openKCPage;
