@@ -338,4 +338,3 @@ window.openKCPage = openKCPage;
 window.goHome = goHome;
 window.openKCPage = function() { window.location.href = "kc-matters.html"; };
 window.goHome = function() { window.location.href = "index.html"; };
-                  
