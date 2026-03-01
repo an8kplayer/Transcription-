@@ -10,6 +10,7 @@ body.dark .matter-item { background:#2d2d2d; color:#fff; border-color:#444; }
 .matter-item { 
   border:1px solid #ccc; padding:10px; margin:8px 0; border-radius:5px;
   cursor:pointer; transition: background 0.2s; display:block;
+  width: 100%; text-align: left;
 }
 .matter-item:hover { background:#f0f0f0; }
 .back-btn { background:#6c757d; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; margin-bottom:15px; }
@@ -19,7 +20,7 @@ body.dark .matter-item { background:#2d2d2d; color:#fff; border-color:#444; }
 
 <div class="container">
 <h2>KC Matters</h2>
-<button onclick="goHome()">Home</button>
+<button onclick="goHome()" class="back-btn">← Back to Home</button>
 
 <div id="mattersList">
   <!-- Matters will be injected here -->
@@ -29,13 +30,17 @@ body.dark .matter-item { background:#2d2d2d; color:#fff; border-color:#444; }
 
 <script src="script.js"></script>
 <script>
+// KC MATTERS DATA - EDIT THIS ARRAY TO ADD/REMOVE MATTERS
 const KC_MATTERS = [
   { name: "Transcription No: 1", text: "This is the first pre-saved passage." },
   { name: "Transcription No: 2", text: "Second passage with different content." },
-  { name: "Transcription No: 33", text: "Transcription 33 example passage for testing." }
+  { name: "Transcription No: 33", text: "Transcription 33 example passage for testing." },
+  // Add your new matters below:
+  // { name: "Display Name", text: "Full text content here..." }
 ];
 
 const list = document.getElementById('mattersList');
+list.innerHTML = ''; // Clear any existing content
 
 KC_MATTERS.forEach((matter, index) => {
   const btn = document.createElement('button');
