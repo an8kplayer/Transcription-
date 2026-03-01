@@ -37,11 +37,15 @@ const KC_MATTERS = [
 
 const list = document.getElementById('mattersList');
 
-KC_MATTERS.forEach((matter, index) => {
+KC_MATTERS.forEach((matter) => {
   const btn = document.createElement('button');
   btn.className = 'matter-item';
   btn.innerText = matter.name;
-  btn.onclick = () => selectMatter(matter.text, matter.name);
+
+  btn.addEventListener("click", function(){
+      selectMatter(matter.text, matter.name);
+  });
+
   list.appendChild(btn);
 });
 
