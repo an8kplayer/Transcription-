@@ -43,7 +43,7 @@ KC_MATTERS.forEach((matter) => {
   btn.innerText = matter.name;
 
   btn.addEventListener("click", function(){
-    alert("clicked");
+    selectMatter(matter.text, matter.name);
 });
 
   list.appendChild(btn);
