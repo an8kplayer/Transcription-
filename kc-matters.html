@@ -46,7 +46,10 @@ KC_MATTERS.forEach((matter, index) => {
   const btn = document.createElement('button');
   btn.className = 'matter-item';
   btn.innerText = matter.name;
-  btn.onclick = () => selectMatter(matter.text, matter.name);
+  btn.onclick = () => {
+    console.log("Button clicked for:", matter.name);
+    selectMatter(matter.text, matter.name);
+  };
   list.appendChild(btn);
 });
 
