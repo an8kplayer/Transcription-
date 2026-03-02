@@ -106,22 +106,25 @@ body.dark span[style*="text-decoration: underline red"] {
 
 .dev-footer {
     position: fixed;
-    bottom: 6px;
-    left: 0;
-    width: 100%;
+    bottom: 8px;
+
+    left: 50%;
+    transform: translateX(-50%);
+
     text-align: center;
     font-size: 13px;
     color: #777;
     letter-spacing: 0.4px;
     opacity: 0.9;
     z-index: 999;
+
+    width: max-content;
 }
 
-/* Dark mode */
 body.dark .dev-footer {
     color: #aaa;
 }
 
 body {
-    padding-bottom: 30px;
+    padding-bottom: 35px;
 }
