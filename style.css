@@ -121,3 +121,7 @@ body.dark span[style*="text-decoration: underline red"] {
 body.dark .dev-footer {
     color: #aaa;
 }
+
+body {
+    padding-bottom: 30px;
+}
