@@ -230,6 +230,20 @@ function submitExam(){
     }, 100);
 }
 
+// ---------- PUNCTUATION CLEANER ----------
+function preprocessWords(words){
+    return words.map((word, index)=>{
+        let cleaned = word.replace(/[;,]/g,""); // remove commas and semicolons
+        
+        // remove periods that are not sentence-ending
+        if(index < words.length - 1){
+            cleaned = cleaned.replace(/\./g,"");
+        }
+
+        return cleaned;
+    });
+}
+
 // ---------- RESULT PAGE ----------
 function showResult(){
     const passage = localStorage.getItem("currentPassage")||"";
@@ -239,10 +253,13 @@ function showResult(){
     const originalWords = passage.trim().split(/\s+/).filter(w=>w.length>0);
     const typedWords = typed.trim().split(/\s+/).filter(w=>w.length>0);
 
+// Ignore comma/semicolon/inner-period errors
+    const cleanOriginal = preprocessWords(originalWords);
+    const cleanTyped = preprocessWords(typedWords);
     const wordsTypedCount = typedWords.length;
     const grossWPM = (wordsTypedCount/timeTaken).toFixed(2);
 
-    const editRes = wordEditDistance(originalWords, typedWords);
+    const editRes = wordEditDistance(cleanOriginal, cleanTyped);
     const mistakes = editRes.errors;
     const netWPM = ((wordsTypedCount - mistakes)/timeTaken).toFixed(2);
     const accuracy = ((wordsTypedCount - mistakes)/wordsTypedCount*100).toFixed(2);
